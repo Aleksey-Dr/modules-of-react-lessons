@@ -1,29 +1,53 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-// import MyFunctionalComponent from './MyFunctionalComponent';
-// import User from './User';
-import Books from './Books';
+// const profile = (
+//     <div className="profile">
+//         <div className="description">
+//             <img
+//             src={ user.avatar }
+//             alt="User avatar"
+//             className="avatar"
+//             />
+//                 <p className="name">{ user.username }</p>
+//             <p className="tag">{ user.tag }</p>
+//             <p className="location">{ user.location }</p>
+//         </div>
+
+//         <ul className="stats">
+//             <li>
+//                 <span className="label">Followers</span>
+//                 <span className="quantity">{ user.stats.followers }</span>
+//             </li>
+//             <li>
+//                 <span className="label">Views</span>
+//                 <span className="quantity">{ user.stats.views }</span>
+//             </li>
+//             <li>
+//                 <span className="label">Likes</span>
+//                 <span className="quantity">{ user.stats.likes }</span>
+//             </li>
+//         </ul>
+//     </div>
+// );
+
+// ReactDOM.render(<Users
+    //     avatar={user.avatar}
+    //     name={user.username}
+    //     tag={user.tag}
+    //     location={user.location}
+    //     stats={user.stats}
+//     />,
+//     document.querySelector('#root'));
 
 // const link = <a href="https://reactjs.org/">React website</a>;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-    {/* <MyFunctionalComponent /> */}
-    {/* <User /> */}
-  <Books />
-  </React.StrictMode>
-);
-
-// console.log(MyFunctionalComponent);
-// console.log(Text);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    root.render(
+   <React.StrictMode>
+     <App />
+   </React.StrictMode>
+ );
