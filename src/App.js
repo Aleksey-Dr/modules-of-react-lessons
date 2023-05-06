@@ -1,6 +1,7 @@
 import Users from './components/Users';
 import Section from './components/Section';
 import Counter from './components/counter/Counter';
+import Dropdown from './components/dropdown/Dropdown';
 
 import users from './users.json';
 
@@ -65,6 +66,10 @@ export default function App() {
     <Section /> */}
     {/* Module 2 */}
     
-    <Counter initialValue={0} />
+    {/* <Counter initialValue={0} /> */}
+
+    {/* <Dropdown /> */}
+
+    
   </div>);
 }
