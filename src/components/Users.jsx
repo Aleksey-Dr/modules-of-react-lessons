@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import defaultAvatar from './avatar.png'
+import defaultAvatar from './avatar.png';
 
 // Components
 export default function Users(props) {

@@ -1,0 +1,20 @@
+.counter-btn button {
+    width: 210px;
+    height: 40px;
+}
+
+.counter-btn button:first-child {
+    background-color:rgb(148, 255, 127);
+}
+
+.counter-btn button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.counter-btn button:nth-child(2) {
+    background-color:rgb(234, 241, 232);
+}
+
+.counter-btn button:last-child {
+    background-color:rgb(232, 135, 135);
+}
