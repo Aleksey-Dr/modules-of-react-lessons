@@ -25,3 +25,10 @@
 3. Create a "Dropdown" class in the Dropdown.jsx.
 4. Create a Dropdown.module.css in the "dropdown" folder.
 
+07.05.2023
+1. Create a "colorPicker" folder in the "components" folder.
+2. Create a ColorPicker.jsx file in the "colorPicker" folder.
+3. Create a "ColorPicker" class in the ColorPicker.jsx.
+4. Create a ColorPicker.module.css in the "colorPicker" folder.
+5. Create a "data" folder in the "src" folder.
+6. Create a colors.json file in the "data" folder.

@@ -22,6 +22,8 @@ class Dropdown extends Component {
   };
 
   render() {
+    const { visible } = this.state;
+
     return (
       <div className={clsx(css.dropdown)}>
         {/* <button type="button" className={clsx(css["dropdown-toggle"])} onClick={this.show}>Show</button>
@@ -31,10 +33,10 @@ class Dropdown extends Component {
           className={clsx(css["dropdown-toggle"])}
           onClick={this.toggle}
         >
-          {this.state.visible ? 'Hide' : 'Show'}
+          {visible ? 'Hide' : 'Show'}
         </button>
 
-        {this.state.visible && (
+        {visible && (
           <div className={clsx(css["dropdown-menu"])}>Dropdown menu</div>
         )}
       </div>

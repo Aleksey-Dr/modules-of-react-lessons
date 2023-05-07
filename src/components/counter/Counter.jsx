@@ -42,10 +42,12 @@ class Counter extends Component {
     };
 
     render() {
+        const { value } = this.state;
+
         return (
             <div className={clsx(css.counter)}>
                 <h2 className={clsx(css["counter-title"])}>Counter</h2>
-                <span className={clsx(css["counter-value"])}>{this.state.value}</span>
+                <span className={clsx(css["counter-value"])}>{value}</span>
 
                 <Buttons
                     onIncrement={this.handleIncrement}

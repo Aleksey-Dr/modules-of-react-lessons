@@ -2,8 +2,10 @@ import Users from './components/Users';
 import Section from './components/Section';
 import Counter from './components/counter/Counter';
 import Dropdown from './components/dropdown/Dropdown';
+import ColorPicker from './components/colorPicker/ColorPicker';
 
-import users from './users.json';
+import users from '../src/data/users.json';
+import colors from '../src/data/colors.json';
 
 export default function App() {
   return (<div>
@@ -70,6 +72,6 @@ export default function App() {
 
     {/* <Dropdown /> */}
 
-    
+    <ColorPicker options={ colors } />
   </div>);
 }
