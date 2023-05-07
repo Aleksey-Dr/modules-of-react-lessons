@@ -1,14 +1,34 @@
-import Users from './components/Users';
-import Section from './components/Section';
-import Counter from './components/counter/Counter';
-import Dropdown from './components/dropdown/Dropdown';
-import ColorPicker from './components/colorPicker/ColorPicker';
+import { Component } from 'react';
 
-import users from '../src/data/users.json';
-import colors from '../src/data/colors.json';
+// import Users from './components/Users';
+// import Section from './components/Section';
+// import Counter from './components/counter';
+// import Dropdown from './components/dropdown';
+// import ColorPicker from './components/colorPicker';
+import TodoList from './components/todoList';
 
-export default function App() {
-  return (<div>
+import initialTodos from '../src/data/todos.json';
+// import users from '../src/data/users.json';
+// import colors from '../src/data/colors.json';
+
+class App extends Component {
+  state = {
+    todos: initialTodos,
+  };
+
+  deleteTodo = todoId => {
+    this.setState(prevState => ({
+      todos: prevState.todos.filter(todo => todo.id !== todoId),
+    }));
+  };
+
+  render() {
+    const { todos } = this.state;
+
+    return (
+      <>
+        <TodoList todos={ todos } onDeleteTodo={this.deleteTodo} />
+
     {/* <ul>
       {users.map(user => 
         <li key={user.id}>
@@ -72,6 +92,9 @@ export default function App() {
 
     {/* <Dropdown /> */}
 
-    <ColorPicker options={ colors } />
-  </div>);
+    {/* <ColorPicker options={ colors } /> */}
+  </>);
+  }
 }
+
+export default App;
