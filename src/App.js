@@ -5,29 +5,38 @@ import { Component } from 'react';
 // import Counter from './components/counter';
 // import Dropdown from './components/dropdown';
 // import ColorPicker from './components/colorPicker';
-import TodoList from './components/todoList';
+// import TodoList from './components/todoList';
+import Form from './components/form/Form';
 
-import initialTodos from '../src/data/todos.json';
+// import initialTodos from '../src/data/todos.json';
 // import users from '../src/data/users.json';
 // import colors from '../src/data/colors.json';
 
-class App extends Component {
-  state = {
-    todos: initialTodos,
-  };
+export class App extends Component {
 
-  deleteTodo = todoId => {
-    this.setState(prevState => ({
-      todos: prevState.todos.filter(todo => todo.id !== todoId),
-    }));
-  };
+  // TODO
+  // state = {
+  //   todos: initialTodos,
+  // };
+
+  // deleteTodo = todoId => {
+  //   this.setState(prevState => ({
+  //     todos: prevState.todos.filter(todo => todo.id !== todoId),
+  //   }));
+  // };
+
+  // FORM
+  formSubmitHandler = data => {
+    console.log(data);
+  }
 
   render() {
-    const { todos } = this.state;
+    // const { todos } = this.state;
 
     return (
       <>
-        <TodoList todos={ todos } onDeleteTodo={this.deleteTodo} />
+        <Form onSubmit={this.formSubmitHandler} />
+        {/* <TodoList todos={ todos } onDeleteTodo={this.deleteTodo} /> */}
 
     {/* <ul>
       {users.map(user => 
@@ -97,4 +106,4 @@ class App extends Component {
   }
 }
 
-export default App;
+// export default App;

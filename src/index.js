@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-// import ReactDOM from 'react-dom/client';
+// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+import { App } from './App';
 import './index.css';
-import App from './App';
 
 // const profile = (
 //     <div className="profile">
@@ -45,8 +45,7 @@ import App from './App';
 
 // const link = <a href="https://reactjs.org/">React website</a>;
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
    <React.StrictMode>
      <App />
    </React.StrictMode>
