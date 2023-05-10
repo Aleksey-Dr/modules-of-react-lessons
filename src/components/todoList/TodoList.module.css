@@ -2,9 +2,9 @@
     box-sizing: border-box;
     display: block;
     width: 480px;
-    padding: 40px;
+    padding: 20px 40px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 10px;
     text-align: center;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -21,16 +21,21 @@
 
 .todo-list-item {
     display: flex;
-    padding: 4px;
+    padding: 10px;
     margin-bottom: 8px;
     align-items: center;
     text-align: center;
-    background-color: rgb(245, 240, 166);
+    background-color: rgb(222, 213, 88);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+}
+
+.line-through {
+    text-decoration: line-through;
 }
 
 .todo-list-item:nth-child(2n) {
-    background-color: rgb(210, 245, 166);
+    background-color: rgb(166, 233, 84);
 }
 
 .todo-list-text {
@@ -38,7 +43,14 @@
     margin-right: 10px;
 }
 
+.todo-list-checkbox {
+    width: 22px;
+    height: 22px;
+    margin-right: 20px;
+}
+
 .todo-list-item button {
     height: 28px;
     margin-left: auto;
+    background-color: rgb(251, 193, 193)
 }

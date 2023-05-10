@@ -7,6 +7,7 @@ class Form extends Component {
         name: '',
         nickname: '',
         experience: 'junior',
+        licence: false,
     };
 
     nameInputId = shortid.generate();
@@ -18,6 +19,12 @@ class Form extends Component {
         this.setState({
             [name]: value,
         });
+    };
+
+    handleLicenceChange = event => {
+        this.setState({
+            licence: event.currentTarget.checked,
+        })
     };
 
     handleSubmit = event => {
@@ -93,7 +100,20 @@ class Form extends Component {
                         />Senior
                     </label>
                     <br />
-                    <button type="submit">Submit</button>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="licence"
+                            checked={this.state.licence}
+                            onChange={this.handleLicenceChange} />Accepted
+                    </label>
+                    <br />
+
+                    <button
+                        type="submit"
+                        disabled={!this.state.licence}>Submit
+                    </button>
                 </form>
             </div>
         )
