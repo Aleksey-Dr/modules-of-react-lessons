@@ -31,6 +31,6 @@ class TodoEditor extends Component {
             </form>
         );
     };
-}
+};
 
 export default TodoEditor;
