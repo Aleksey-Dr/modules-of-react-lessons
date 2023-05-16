@@ -13,3 +13,13 @@ Video
 Fixed
 1. Fixed styles for TodoList.
 2. Fixed styles for TodoEditor.
+
+II. Create a component Reader (practice)
+1. Player.
+2. VideoList.
+3. videos.json.
+4. npm i react-plaer.
+5. Reader.
+6. Controls.
+7. Progress.
+8. Publication.

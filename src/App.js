@@ -7,24 +7,33 @@ import shortid from "shortid";
 // import Dropdown from './components/dropdown';
 // import ColorPicker from './components/colorPicker';
 // TODO
-import TodoList from './components/todoList';
-import TodoEditor from './components/todoEditor';
-import Filter from './components/filter';
+// import TodoList from './components/todoList';
+// import TodoEditor from './components/todoEditor';
+// import Filter from './components/filter';
+// import Modal from './components/modal';
+// import IconBtn from './components/iconBtn';
 // todo
 // import Draft from './components/draft';
 // import Form from './components/form/Form';
-import Modal from './components/modal';
 // import Clock from './components/clock';
-import IconBtn from './components/iconBtn';
+// PLAYER
+// import Player from './components/player';
+// import VideoList from './components/videoList';
+// player
+// READER
+import Reader from './components/reader';
+//reader
 
-import initialTodos from "../src/data/todos.json";
+import initialTodos from './data/todos.json';
 // import Tabs from "./components/tabs";
-// import users from '../src/data/users.json';
-// import colors from '../src/data/colors.json';
-// import tabs from '../src/data/tabs.json';
+// import users from './data/users.json';
+// import colors from './data/colors.json';
+// import tabs from './data/tabs.json';
+// import videos from './data/videos.json';
+import publications from './data/publications.json';
 
-import { ReactComponent as OpenModal } from './icons/open-modal.svg';
-import { ReactComponent as CloseModal } from './icons/close-modal.svg';
+// import { ReactComponent as OpenModal } from './icons/open-modal.svg';
+// import { ReactComponent as CloseModal } from './icons/close-modal.svg';
 
 export class App extends Component {
   // TODO
@@ -34,6 +43,7 @@ export class App extends Component {
     // MODAL
     showModal: false,
     showClock: false,
+    selectedVideo: null,
   };
 
   // MODULE 3
@@ -111,6 +121,11 @@ export class App extends Component {
   // }
   // form
 
+  // PLAYER
+  selectVideo = link => {
+    this.setState({ selectedVideo: link });
+  }
+
   render() {
     const { todos, filter, showModal, showClock } = this.state;
 
@@ -122,6 +137,14 @@ export class App extends Component {
 
     return (
       <>
+        <Reader items={publications} />
+        
+        {/* <div>
+          <h2>Selected video: {this.state.selectedVideo}</h2>
+          <VideoList videos={videos} onSelect={this.selectVideo} />
+          <Player url={this.state.selectedVideo} />
+        </div> */}
+        
         {/* <Tabs items={tabs} /> */}
 
         {/* <button type="button" onClick={this.toggleClock}>Show clock</button>
@@ -131,29 +154,29 @@ export class App extends Component {
 
         {/* <Form onSubmit={this.formSubmitHandler} /> */}
 
-        <IconBtn onClick={this.toggleModal} aria-label="Open modal">
+        {/* <IconBtn onClick={this.toggleModal} aria-label="Open modal">
           <OpenModal width="40px" height="40px" fill="white" />
-        </IconBtn>
+        </IconBtn> */}
 
-        {showModal && (
+        {/* {showModal && (
           <Modal onClose={this.toggleModal}>
             <TodoEditor onSubmit={this.addTodo} />
             <IconBtn onClick={this.toggleModal} aria-label="Close modal">
               <CloseModal width="40px" height="40px"/>
             </IconBtn>
           </Modal>
-        )}
+        )} */}
 
-        <Filter
+        {/* <Filter
           value={filter}
           onChange={this.changeFilter}
-        />
+        /> */}
 
-        <TodoList
+        {/* <TodoList
           todos={filterTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
+        /> */}
 
         {/* <ul>
       {users.map(user => 
