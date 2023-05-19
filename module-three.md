@@ -23,3 +23,13 @@ II. Create a component Reader (practice)
 6. Controls.
 7. Progress.
 8. Publication.
+
+III. HTTP requests
+1. PokemonForm.
+2. import { ImSearch } from 'react';
+3. npm i react-toastify.
+4. PokemonInfo.
+5. PokemonErrorView.
+6. PokemonDataView.
+7. PokemonPendingView.
+8. pokemon-api.js.

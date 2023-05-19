@@ -1,8 +1,9 @@
 import { Component } from "react";
-import shortid from "shortid";
+// import shortid from "shortid";
+import { ToastContainer } from 'react-toastify';
 
 // import Users from './components/users/Users';
-// import Section from './components/Section';
+// import Section from './components/section/Section';
 // import Counter from './components/counter';
 // import Dropdown from './components/dropdown';
 // import ColorPicker from './components/colorPicker';
@@ -21,8 +22,10 @@ import shortid from "shortid";
 // import VideoList from './components/videoList';
 // player
 // READER
-import Reader from './components/reader';
+// import Reader from './components/reader';
 //reader
+import PokemonForm from './components/pokemonForm';
+import PokemonInfo from './components/pokemonInfo';
 
 import initialTodos from './data/todos.json';
 // import Tabs from "./components/tabs";
@@ -30,7 +33,7 @@ import initialTodos from './data/todos.json';
 // import colors from './data/colors.json';
 // import tabs from './data/tabs.json';
 // import videos from './data/videos.json';
-import publications from './data/publications.json';
+// import publications from './data/publications.json';
 
 // import { ReactComponent as OpenModal } from './icons/open-modal.svg';
 // import { ReactComponent as CloseModal } from './icons/close-modal.svg';
@@ -44,75 +47,89 @@ export class App extends Component {
     showModal: false,
     showClock: false,
     selectedVideo: null,
+    pokemon: null,
+    loading: false,
+    pokemonName: '',
   };
 
   // MODULE 3
-  componentDidUpdate(prevProps, prevState) {
-    // console.log("componentDidUpdate");
+  // componentDidUpdate(prevProps, prevState) {
+  //   // console.log("componentDidUpdate");
 
-    if (this.state.todos !== prevState.todos) {
-      // console.log("Updated field todos");
+  //   if (this.state.todos !== prevState.todos) {
+  //     // console.log("Updated field todos");
 
-      localStorage.setItem("todos", JSON.stringify(this.state.todos));
-    }
-  };
+  //     localStorage.setItem("todos", JSON.stringify(this.state.todos));
+  //   }
+  // };
 
-  componentDidMount() {
-    const todos = localStorage.getItem("todos");
-    const parsedTodos = JSON.parse(todos);
+  // TODOS
+  // componentDidMount() {
+  //   const todos = localStorage.getItem("todos");
+  //   const parsedTodos = JSON.parse(todos);
 
-    parsedTodos &&
-      this.setState({
-        todos: parsedTodos,
-      });
-  };
+  //   parsedTodos &&
+  //     this.setState({
+  //       todos: parsedTodos,
+  //     });
+  // };
+  // todos
 
-  toggleClock = () => {
-    this.setState({
-      showClock: !this.state.showClock,
-    });
-  }
+  // componentDidMount() {
+  //   this.setState({ loading: true });
+
+  //   fetch(`https://pokeapi.co/api/v2/pokemon/ditto`)
+  //     .then(res => res.json()).then(pokemon =>
+  //       this.setState({ pokemon }))
+  //     .finally(() => this.setState({ loading: false }));
+  // };
+
+  // toggleClock = () => {
+  //   this.setState({
+  //     showClock: !this.state.showClock,
+  //   });
+  // };
 
   // MODAL
-  toggleModal = () => {
-    this.setState({
-      showModal: !this.state.showModal,
-    });
-  };
+  // toggleModal = () => {
+  //   this.setState({
+  //     showModal: !this.state.showModal,
+  //   });
+  // };
 
-  addTodo = (text) => {
-    const todo = {
-      id: shortid.generate(),
-      text,
-      completed: false,
-    };
+  // addTodo = (text) => {
+  //   const todo = {
+  //     id: shortid.generate(),
+  //     text,
+  //     completed: false,
+  //   };
 
-    this.setState(({ todos }) => ({
-      todos: [todo, ...todos],
-    }));
+  //   this.setState(({ todos }) => ({
+  //     todos: [todo, ...todos],
+  //   }));
 
-    this.toggleModal();
-  };
+  //   this.toggleModal();
+  // };
 
-  deleteTodo = (todoId) => {
-    this.setState((prevState) => ({
-      todos: prevState.todos.filter((todo) => todo.id !== todoId),
-    }));
-  };
+  // deleteTodo = (todoId) => {
+  //   this.setState((prevState) => ({
+  //     todos: prevState.todos.filter((todo) => todo.id !== todoId),
+  //   }));
+  // };
 
-  toggleCompleted = (todoId) => {
-    this.setState(({ todos }) => ({
-      todos: todos.map((todo) =>
-        todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
-      ),
-    }));
-  };
+  // toggleCompleted = (todoId) => {
+  //   this.setState(({ todos }) => ({
+  //     todos: todos.map((todo) =>
+  //       todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
+  //     ),
+  //   }));
+  // };
 
-  changeFilter = (event) => {
-    this.setState({
-      filter: event.currentTarget.value,
-    });
-  };
+  // changeFilter = (event) => {
+  //   this.setState({
+  //     filter: event.currentTarget.value,
+  //   });
+  // };
   // todo
 
   // FORM
@@ -122,22 +139,41 @@ export class App extends Component {
   // form
 
   // PLAYER
-  selectVideo = link => {
-    this.setState({ selectedVideo: link });
-  }
+  // selectVideo = link => {
+  //   this.setState({ selectedVideo: link });
+  // };
+  // player
+
+  // POKEMON
+  handleFormSubmit = pokemonName => {
+    this.setState({ pokemonName });
+  };
 
   render() {
-    const { todos, filter, showModal, showClock } = this.state;
+    const { todos, filter, showModal, showClock, pokemonName } = this.state;
 
-    const normalizedFilter = this.state.filter.toLowerCase();
+    // const normalizedFilter = this.state.filter.toLowerCase();
 
-    const filterTodos = this.state.todos.filter((todo) =>
-      todo.text.toLowerCase().includes(normalizedFilter)
-    );
+    // const filterTodos = this.state.todos.filter((todo) =>
+    //   todo.text.toLowerCase().includes(normalizedFilter)
+    // );
 
     return (
       <>
-        <Reader items={publications} />
+        <div style={{ maxWidth: 1170, margin: '0 auto', padding: 20 }}>
+          <PokemonForm onSubmit={this.handleFormSubmit} />
+          <PokemonInfo pokemonName={ pokemonName } />
+          <div style={{ width: 100 }} >
+            <ToastContainer
+            autoClose={3000}
+          />
+          </div>
+        </div>
+        
+        {/* {this.state.loading && <h3>Loading...</h3>}
+        {this.state.pokemon && <div>{this.state.pokemon.name}</div>} */}
+        
+        {/* <Reader items={publications} /> */}
         
         {/* <div>
           <h2>Selected video: {this.state.selectedVideo}</h2>
