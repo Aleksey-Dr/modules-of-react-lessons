@@ -1,6 +1,6 @@
 import { Component } from "react";
 // import shortid from "shortid";
-import { ToastContainer } from 'react-toastify';
+// import { ToastContainer } from 'react-toastify';
 
 // import Users from './components/users/Users';
 // import Section from './components/section/Section';
@@ -24,8 +24,12 @@ import { ToastContainer } from 'react-toastify';
 // READER
 // import Reader from './components/reader';
 //reader
-import PokemonForm from './components/pokemonForm';
-import PokemonInfo from './components/pokemonInfo';
+// POKEMON
+// import PokemonForm from './components/pokemonForm';
+// import PokemonInfo from './components/pokemonInfo';
+// pokemon
+import MaterialEditionForm from "./components/materialEditionForm";
+import MaterialsList from './components/materialsList';
 
 import initialTodos from './data/todos.json';
 // import Tabs from "./components/tabs";
@@ -34,6 +38,7 @@ import initialTodos from './data/todos.json';
 // import tabs from './data/tabs.json';
 // import videos from './data/videos.json';
 // import publications from './data/publications.json';
+import * as API from './services/material-api'
 
 // import { ReactComponent as OpenModal } from './icons/open-modal.svg';
 // import { ReactComponent as CloseModal } from './icons/close-modal.svg';
@@ -47,9 +52,12 @@ export class App extends Component {
     showModal: false,
     showClock: false,
     selectedVideo: null,
-    pokemon: null,
-    loading: false,
-    pokemonName: '',
+    // pokemon: null,
+    // loading: false,
+    // pokemonName: '',
+    materials: [],
+    isLoading: false,
+    error: false,
   };
 
   // MODULE 3
@@ -83,6 +91,19 @@ export class App extends Component {
   //       this.setState({ pokemon }))
   //     .finally(() => this.setState({ loading: false }));
   // };
+
+  // MATERIALS
+  async componentDidMount() {
+    try {
+      this.setState({ isLoading: true });
+      const materials = await API.getMaterials();
+      this.setState({ materials, isLoading: false });
+    } catch (error) {
+      this.setState({ error: true, isLoading: false });
+      console.log(error);
+    }
+  };
+  // materials
 
   // toggleClock = () => {
   //   this.setState({
@@ -145,12 +166,63 @@ export class App extends Component {
   // player
 
   // POKEMON
-  handleFormSubmit = pokemonName => {
-    this.setState({ pokemonName });
+  // handleFormSubmit = pokemonName => {
+  //   this.setState({ pokemonName });
+  // };
+
+  addMaterial = async (values) => {
+    try {
+      // this.setState({ isLoading: true });
+      const material = await API.addMaterial(values);
+      this.setState(state => ({
+        materials: [...state.materials, material],
+        // isLoading: false,
+      }));
+    } catch (error) {
+      this.setState({ error: true, isLoading: false });
+      console.log(error);
+    };
+  };
+
+  editMaterial = async fields => {
+    try {
+      const updatedMaterial = await API.updateMaterial(fields);
+      this.setState(state => ({
+        materials: state.materials.map(material =>
+          material.id === fields.id
+            ? updatedMaterial
+            : material
+        ),
+      }));
+    } catch (error) {
+      this.setState({ error: true, isLoading: false });
+      console.log(error);
+    };
+  }
+
+  deleteMaterial = async id => {
+    try {
+      await API.deleteMaterial(id);
+      this.setState(state => ({
+        materials: state.materials.filter(material => material.id !== id),
+      }));
+    } catch (error) {
+      this.setState({ error: true, isLoading: false });
+      console.log(error);
+    }
   };
 
   render() {
-    const { todos, filter, showModal, showClock, pokemonName } = this.state;
+    const {
+      todos,
+      filter,
+      showModal,
+      showClock,
+      pokemonName,
+      isLoading,
+      materials,
+      error,
+    } = this.state;
 
     // const normalizedFilter = this.state.filter.toLowerCase();
 
@@ -160,7 +232,25 @@ export class App extends Component {
 
     return (
       <>
-        <div style={{ maxWidth: 1170, margin: '0 auto', padding: 20 }}>
+        <div>
+          {/* <button type="button" onClick={this.editMaterial}>Update</button> */}
+          {/* { isLoading && <p>Loading...</p>} */}
+          {error && <p>Oops, something went wrong. Reload the page and try again!</p>}
+          <MaterialEditionForm
+            onSubmit={this.addMaterial}
+            // isSubmitting={isLoading}
+          />
+          {isLoading
+            ? "Loading..."
+            : <MaterialsList
+              items={ materials }
+              onDelete={this.deleteMaterial}
+              onUpdate={this.editMaterial}
+            />}
+          
+        </div>
+        
+        {/* <div style={{ maxWidth: 1170, margin: '0 auto', padding: 20 }}>
           <PokemonForm onSubmit={this.handleFormSubmit} />
           <PokemonInfo pokemonName={ pokemonName } />
           <div style={{ width: 100 }} >
@@ -168,7 +258,7 @@ export class App extends Component {
             autoClose={3000}
           />
           </div>
-        </div>
+        </div> */}
         
         {/* {this.state.loading && <h3>Loading...</h3>}
         {this.state.pokemon && <div>{this.state.pokemon.name}</div>} */}

@@ -33,3 +33,16 @@ III. HTTP requests
 6. PokemonDataView.
 7. PokemonPendingView.
 8. pokemon-api.js.
+
+IV. Work with collection of materials (practice)
+1. MaterialEditionForm.
+2. npm i formik.
+3. import { Formik } from 'fopmik';.
+4. $ npm i axios.
+5. material-api.js.
+6. addMaterial.
+7. MaterialsList.
+8. getMaterials.
+9. deleteMaterial.
+10. updateMaterial.
+11. Modal window.
