@@ -1,7 +1,6 @@
 import { Component } from 'react';
 
 import clsx from 'clsx';
-
 import css from './Clock.module.css';
 
 class Clock extends Component {

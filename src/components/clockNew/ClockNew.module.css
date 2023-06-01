@@ -1,0 +1,17 @@
+.clock-face {
+    text-align: center;
+    font-size: 42px;
+}
+
+.stop-btn {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 40px;
+    margin: auto;
+
+    font-size: 28px;
+    letter-spacing: 12px;
+}

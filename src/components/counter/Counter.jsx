@@ -1,10 +1,10 @@
 // Module 2. Import Component
 import { Component } from 'react';
+
 import clsx from 'clsx';
+import css from './Counter.module.css';
 
 import Buttons from '../buttons/Buttons';
-
-import css from './Counter.module.css';
 
 class Counter extends Component {
     static defaultProps = {
