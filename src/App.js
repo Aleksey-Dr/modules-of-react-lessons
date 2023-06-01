@@ -28,17 +28,21 @@ import { Component } from "react";
 // import PokemonForm from './components/pokemonForm';
 // import PokemonInfo from './components/pokemonInfo';
 // pokemon
-import MaterialEditionForm from "./components/materialEditionForm";
-import MaterialsList from './components/materialsList';
+// import MaterialEditionForm from "./components/materialEditionForm";
+// import MaterialsList from './components/materialsList';
+// import SignupForm from './components/signupForm';
+// import ColorPickerNew from './components/colorPickerNew';
+// import CounterNew from './components/counterNew';
+import ClockNew from './components/clockNew';
 
-import initialTodos from './data/todos.json';
+// import initialTodos from './data/todos.json';
 // import Tabs from "./components/tabs";
 // import users from './data/users.json';
 // import colors from './data/colors.json';
 // import tabs from './data/tabs.json';
 // import videos from './data/videos.json';
 // import publications from './data/publications.json';
-import * as API from './services/material-api'
+// import * as API from './services/material-api'
 
 // import { ReactComponent as OpenModal } from './icons/open-modal.svg';
 // import { ReactComponent as CloseModal } from './icons/close-modal.svg';
@@ -46,18 +50,18 @@ import * as API from './services/material-api'
 export class App extends Component {
   // TODO
   state = {
-    todos: initialTodos,
-    filter: "",
+    // todos: initialTodos,
+    // filter: "",
     // MODAL
-    showModal: false,
-    showClock: false,
-    selectedVideo: null,
+    // showModal: false,
+    // showClock: false,
+    // selectedVideo: null,
     // pokemon: null,
     // loading: false,
     // pokemonName: '',
-    materials: [],
-    isLoading: false,
-    error: false,
+    // materials: [],
+    // isLoading: false,
+    // error: false,
   };
 
   // MODULE 3
@@ -93,16 +97,16 @@ export class App extends Component {
   // };
 
   // MATERIALS
-  async componentDidMount() {
-    try {
-      this.setState({ isLoading: true });
-      const materials = await API.getMaterials();
-      this.setState({ materials, isLoading: false });
-    } catch (error) {
-      this.setState({ error: true, isLoading: false });
-      console.log(error);
-    }
-  };
+  // async componentDidMount() {
+  //   try {
+  //     this.setState({ isLoading: true });
+  //     const materials = await API.getMaterials();
+  //     this.setState({ materials, isLoading: false });
+  //   } catch (error) {
+  //     this.setState({ error: true, isLoading: false });
+  //     console.log(error);
+  //   }
+  // };
   // materials
 
   // toggleClock = () => {
@@ -170,58 +174,60 @@ export class App extends Component {
   //   this.setState({ pokemonName });
   // };
 
-  addMaterial = async (values) => {
-    try {
-      // this.setState({ isLoading: true });
-      const material = await API.addMaterial(values);
-      this.setState(state => ({
-        materials: [...state.materials, material],
-        // isLoading: false,
-      }));
-    } catch (error) {
-      this.setState({ error: true, isLoading: false });
-      console.log(error);
-    };
-  };
+  // MATERIALS
+  // addMaterial = async (values) => {
+  //   try {
+  //     // this.setState({ isLoading: true });
+  //     const material = await API.addMaterial(values);
+  //     this.setState(state => ({
+  //       materials: [...state.materials, material],
+  //       // isLoading: false,
+  //     }));
+  //   } catch (error) {
+  //     this.setState({ error: true, isLoading: false });
+  //     console.log(error);
+  //   };
+  // };
 
-  editMaterial = async fields => {
-    try {
-      const updatedMaterial = await API.updateMaterial(fields);
-      this.setState(state => ({
-        materials: state.materials.map(material =>
-          material.id === fields.id
-            ? updatedMaterial
-            : material
-        ),
-      }));
-    } catch (error) {
-      this.setState({ error: true, isLoading: false });
-      console.log(error);
-    };
-  }
+  // editMaterial = async fields => {
+  //   try {
+  //     const updatedMaterial = await API.updateMaterial(fields);
+  //     this.setState(state => ({
+  //       materials: state.materials.map(material =>
+  //         material.id === fields.id
+  //           ? updatedMaterial
+  //           : material
+  //       ),
+  //     }));
+  //   } catch (error) {
+  //     this.setState({ error: true, isLoading: false });
+  //     console.log(error);
+  //   };
+  // }
 
-  deleteMaterial = async id => {
-    try {
-      await API.deleteMaterial(id);
-      this.setState(state => ({
-        materials: state.materials.filter(material => material.id !== id),
-      }));
-    } catch (error) {
-      this.setState({ error: true, isLoading: false });
-      console.log(error);
-    }
-  };
+  // deleteMaterial = async id => {
+  //   try {
+  //     await API.deleteMaterial(id);
+  //     this.setState(state => ({
+  //       materials: state.materials.filter(material => material.id !== id),
+  //     }));
+  //   } catch (error) {
+  //     this.setState({ error: true, isLoading: false });
+  //     console.log(error);
+  //   }
+  // };
+  // materials
 
   render() {
     const {
-      todos,
-      filter,
-      showModal,
-      showClock,
-      pokemonName,
-      isLoading,
-      materials,
-      error,
+      // todos,
+      // filter,
+      // showModal,
+      // showClock,
+      // pokemonName,
+      // isLoading,
+      // materials,
+      // error,
     } = this.state;
 
     // const normalizedFilter = this.state.filter.toLowerCase();
@@ -232,10 +238,18 @@ export class App extends Component {
 
     return (
       <>
-        <div>
+        <ClockNew />
+        
+        {/* <CounterNew /> */}
+        
+        {/* <ColorPickerNew options={ colors } /> */}
+        
+        {/* <SignupForm /> */}
+
+        {/* <div> */}
           {/* <button type="button" onClick={this.editMaterial}>Update</button> */}
           {/* { isLoading && <p>Loading...</p>} */}
-          {error && <p>Oops, something went wrong. Reload the page and try again!</p>}
+          {/* {error && <p>Oops, something went wrong. Reload the page and try again!</p>}
           <MaterialEditionForm
             onSubmit={this.addMaterial}
             // isSubmitting={isLoading}
@@ -246,9 +260,9 @@ export class App extends Component {
               items={ materials }
               onDelete={this.deleteMaterial}
               onUpdate={this.editMaterial}
-            />}
+            />} */}
           
-        </div>
+        {/* </div> */}
         
         {/* <div style={{ maxWidth: 1170, margin: '0 auto', padding: 20 }}>
           <PokemonForm onSubmit={this.handleFormSubmit} />

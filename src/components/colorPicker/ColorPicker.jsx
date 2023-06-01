@@ -42,7 +42,7 @@ class ColorPicker extends PureComponent {
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default ColorPicker;
